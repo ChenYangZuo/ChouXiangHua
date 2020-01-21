@@ -1,14 +1,9 @@
 package com.zzzcy.chouxianghua;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -21,23 +16,16 @@ public class FirstLauncherActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestPermission(this);
-        downLoad("https://github.com/ChenYangZuo/ChouXiangHua/blob/master/dictionary.json","dictionary.json");
+
+        Log.i("123123","这里这里");
+//        ActivityCompat.requestPermissions(FirstLauncherActivity.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
+        downLoad("http://116.62.147.56:8085/directory.json","dictionary.json");
+        Log.i("123123","第一次启动下载");
         intent=new Intent(FirstLauncherActivity.this,MainActivity.class);
         startActivity(intent);
         finish();
     }
 
-    private void requestPermission(Activity context) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(context, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-
-            }
-        }
-    }
 
     public static void downLoad(final String path, final String FileName) {
         new Thread(new Runnable() {

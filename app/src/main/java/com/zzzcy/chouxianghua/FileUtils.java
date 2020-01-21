@@ -1,6 +1,5 @@
 package com.zzzcy.chouxianghua;
 
-import android.os.Environment;
 
 import java.io.File;
 
@@ -8,7 +7,7 @@ public class FileUtils {
 
 
 
-    private String path = Environment.getExternalStorageDirectory().toString() + "/data/com.zzzcy.chouxianghua";
+    private String path = "/data/data/com.zzzcy.chouxianghua";
 
     public FileUtils() {
         File file = new File(path);
@@ -28,4 +27,6 @@ public class FileUtils {
     public File createFile(String FileName) {
         return new File(path, FileName);
     }
+
+
 }
