@@ -2,29 +2,30 @@ package com.zzzcy.chouxianghua;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class FirstLauncherActivity extends AppCompatActivity {
 
+    Intent intent;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestPermission(this);
-        downLoad("https://www.github.com/zzzcy","dictionary.json");
-
-
-
+        downLoad("https://github.com/ChenYangZuo/ChouXiangHua/blob/master/dictionary.json","dictionary.json");
+        intent=new Intent(FirstLauncherActivity.this,MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void requestPermission(Activity context) {
