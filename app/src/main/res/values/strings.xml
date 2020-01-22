@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">抽象话</string>
+    <string name="url">http://116.62.147.56:8085/directory.json</string>
 </resources>
